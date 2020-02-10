@@ -8,7 +8,7 @@ import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../pages/components/Header';
 import Home from '../pages/components/Home';
 import NotFound from '../pages/components/NotFound';
@@ -53,9 +53,11 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header />
-        <Route exact path='/' component={Home} />
-        <Route exact path='/videos' component={Videos} />
-        <Route component={NotFound} />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/videos' component={Videos} />
+          <Route component={NotFound} />
+        </Switch>
       </Fragment>
     </Provider>
   </BrowserRouter>
